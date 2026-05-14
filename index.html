@@ -1,0 +1,1235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aliments Distinction — L'excellence à votre table</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --black:      #080808;
+            --dark:       #111111;
+            --dark-2:     #1A1A1A;
+            --dark-3:     #242424;
+            --gold:       #C9A84C;
+            --gold-light: #E2C87A;
+            --ivory:      #F5F0E8;
+            --ivory-dim:  #C8BCA8;
+            --gray:       #666666;
+            --gray-light: #999999;
+            --font-serif: 'Cormorant Garamond', Georgia, serif;
+            --font-sans:  'Montserrat', sans-serif;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--black);
+            color: var(--ivory);
+            font-family: var(--font-sans);
+            font-weight: 300;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        img { display: block; width: 100%; height: 100%; object-fit: cover; }
+        a   { text-decoration: none; color: inherit; }
+        ul  { list-style: none; }
+
+        /* ===== TYPOGRAPHY ===== */
+        .t-label {
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.28em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .t-h2 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.2rem, 4vw, 3.6rem);
+            font-weight: 300;
+            line-height: 1.12;
+        }
+
+        .t-h3 {
+            font-family: var(--font-serif);
+            font-size: clamp(1.4rem, 2.2vw, 1.9rem);
+            font-weight: 400;
+            line-height: 1.25;
+        }
+
+        .t-body {
+            font-size: 0.82rem;
+            font-weight: 300;
+            line-height: 1.9;
+            color: var(--gray-light);
+        }
+
+        /* ===== UTILITIES ===== */
+        .gold-line {
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--gold);
+            margin: 1.4rem 0;
+        }
+        .gold-line--center { margin: 1.4rem auto; }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            font-family: var(--font-sans);
+            font-size: 0.62rem;
+            font-weight: 500;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            padding: 16px 40px;
+            border: 1px solid;
+            transition: all 0.35s ease;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+        .btn-gold        { background: var(--gold);      border-color: var(--gold);  color: var(--black); }
+        .btn-gold:hover  { background: transparent;      color: var(--gold); }
+        .btn-outline     { background: transparent;      border-color: rgba(245,240,232,0.6); color: var(--ivory); }
+        .btn-outline:hover { background: rgba(245,240,232,0.08); }
+        .btn-ghost-gold  { background: transparent;      border-color: var(--gold);  color: var(--gold); }
+        .btn-ghost-gold:hover { background: var(--gold); color: var(--black); }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 1000;
+            padding: 28px 48px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: background 0.45s ease, padding 0.45s ease, border-color 0.45s ease;
+            border-bottom: 1px solid transparent;
+        }
+        .nav.scrolled {
+            background: rgba(8, 8, 8, 0.96);
+            padding: 18px 48px;
+            border-bottom-color: rgba(201, 168, 76, 0.12);
+            backdrop-filter: blur(12px);
+        }
+        .nav-logo {
+            display: flex;
+            flex-direction: column;
+            gap: 3px;
+        }
+        .nav-logo__main {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            font-weight: 300;
+            letter-spacing: 0.12em;
+            color: var(--ivory);
+            line-height: 1;
+        }
+        .nav-logo__sub {
+            font-size: 0.5rem;
+            font-weight: 500;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 44px;
+        }
+        .nav-link {
+            font-size: 0.62rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--ivory-dim);
+            transition: color 0.2s;
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px; left: 0; right: 0;
+            height: 1px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .nav-link:hover            { color: var(--gold); }
+        .nav-link:hover::after     { transform: scaleX(1); }
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+        .nav-icon {
+            width: 19px; height: 19px;
+            color: var(--ivory-dim);
+            transition: color 0.2s;
+            cursor: pointer;
+            flex-shrink: 0;
+        }
+        .nav-icon:hover { color: var(--gold); }
+
+        /* ===== HERO ===== */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 680px;
+            display: flex;
+            align-items: flex-end;
+            overflow: hidden;
+        }
+        .hero__bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?w=1920&q=85');
+            background-size: cover;
+            background-position: center 40%;
+            animation: heroZoom 14s ease-out forwards;
+        }
+        @keyframes heroZoom {
+            from { transform: scale(1.06); }
+            to   { transform: scale(1.0);  }
+        }
+        .hero__overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                165deg,
+                rgba(8,8,8,0.15) 0%,
+                rgba(8,8,8,0.4)  40%,
+                rgba(8,8,8,0.92) 100%
+            );
+        }
+        .hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 48px 96px;
+            max-width: 860px;
+        }
+        .hero__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 28px;
+        }
+        .hero__eyebrow::before {
+            content: '';
+            display: block;
+            width: 48px; height: 1px;
+            background: var(--gold);
+        }
+        .hero__title {
+            font-family: var(--font-serif);
+            font-size: clamp(3.8rem, 8vw, 7rem);
+            font-weight: 300;
+            line-height: 1.0;
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        .hero__title em {
+            font-style: italic;
+            color: var(--gold-light);
+        }
+        .hero__subtitle {
+            font-size: 0.8rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            color: var(--ivory-dim);
+            max-width: 460px;
+            margin-bottom: 52px;
+            line-height: 1.95;
+        }
+        .hero__ctas { display: flex; gap: 18px; align-items: center; }
+
+        .hero__scroll {
+            position: absolute;
+            right: 48px; bottom: 44px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 14px;
+            z-index: 2;
+        }
+        .hero__scroll span {
+            font-size: 0.52rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gray);
+            writing-mode: vertical-rl;
+        }
+        .scroll-line {
+            width: 1px; height: 64px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scrollPulse 2.2s ease-in-out infinite;
+        }
+        @keyframes scrollPulse {
+            0%, 100% { opacity: 1;   transform: scaleY(1);   }
+            50%       { opacity: 0.3; transform: scaleY(0.65); }
+        }
+
+        /* ===== MARQUEE ===== */
+        .ticker {
+            background: var(--gold);
+            padding: 13px 0;
+            overflow: hidden;
+        }
+        .ticker__inner {
+            display: flex;
+            width: max-content;
+            animation: ticker 32s linear infinite;
+        }
+        .ticker__item {
+            font-family: var(--font-sans);
+            font-size: 0.58rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--black);
+            padding: 0 52px;
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            gap: 52px;
+        }
+        .ticker__item::after { content: '◆'; font-size: 0.35rem; }
+        @keyframes ticker {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-50%); }
+        }
+
+        /* ===== PROMISE ===== */
+        .promise { background: var(--dark); padding: 120px 0; }
+        .promise__header { text-align: center; max-width: 580px; margin: 0 auto 80px; }
+        .promise__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            background: rgba(201, 168, 76, 0.12);
+        }
+        .promise__card {
+            background: var(--dark);
+            padding: 64px 52px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            transition: background 0.3s;
+        }
+        .promise__card:hover { background: var(--dark-2); }
+        .promise__icon { width: 44px; height: 44px; color: var(--gold); margin-bottom: 36px; }
+        .promise__title {
+            font-family: var(--font-serif);
+            font-size: 1.55rem;
+            font-weight: 400;
+            color: var(--ivory);
+            margin-bottom: 14px;
+        }
+        .promise__text {
+            font-size: 0.8rem;
+            font-weight: 300;
+            line-height: 1.88;
+            color: var(--gray-light);
+        }
+
+        /* ===== COLLECTIONS ===== */
+        .collections { background: var(--black); padding: 120px 0; }
+        .collections__header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 52px;
+        }
+        .collections__grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 10px;
+        }
+        .col-card {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: block;
+        }
+        .col-card:nth-child(1) { grid-column: span 5; }
+        .col-card:nth-child(2) { grid-column: span 7; }
+        .col-card:nth-child(3) { grid-column: span 4; }
+        .col-card:nth-child(4) { grid-column: span 4; }
+        .col-card:nth-child(5) { grid-column: span 4; }
+
+        .col-card__img { overflow: hidden; }
+        .col-card:nth-child(1) .col-card__img,
+        .col-card:nth-child(2) .col-card__img { height: 520px; }
+        .col-card:nth-child(3) .col-card__img,
+        .col-card:nth-child(4) .col-card__img,
+        .col-card:nth-child(5) .col-card__img { height: 380px; }
+
+        .col-card__img img { transition: transform 0.75s ease; }
+        .col-card:hover .col-card__img img { transform: scale(1.07); }
+
+        .col-card__overlay {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.88) 0%, transparent 55%);
+            transition: background 0.3s;
+        }
+        .col-card:hover .col-card__overlay {
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.15) 60%);
+        }
+        .col-card__content {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 36px;
+        }
+        .col-card__label {
+            display: block;
+            font-size: 0.52rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .col-card__title {
+            font-family: var(--font-serif);
+            font-size: 1.65rem;
+            font-weight: 300;
+            color: #fff;
+            line-height: 1.18;
+            margin-bottom: 14px;
+        }
+        .col-card__cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.58rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--gold);
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .col-card__cta::after { content: '→'; }
+        .col-card:hover .col-card__cta { opacity: 1; transform: translateY(0); }
+
+        /* ===== FEATURED PRODUCT ===== */
+        .featured { background: var(--dark); padding: 120px 0; }
+        .featured__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 96px;
+            align-items: center;
+        }
+        .featured__image { position: relative; height: 620px; }
+        .featured__badge {
+            position: absolute;
+            top: 28px; right: 28px;
+            width: 96px; height: 96px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2px;
+            background: rgba(8,8,8,0.9);
+            backdrop-filter: blur(6px);
+        }
+        .featured__badge-label {
+            font-size: 0.5rem;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .featured__badge-value {
+            font-family: var(--font-serif);
+            font-size: 1.0rem;
+            font-weight: 400;
+            color: var(--ivory);
+        }
+        .featured__specs {
+            display: flex;
+            gap: 36px;
+            flex-wrap: wrap;
+            margin: 40px 0;
+            padding: 32px 0;
+            border-top: 1px solid rgba(201,168,76,0.18);
+            border-bottom: 1px solid rgba(201,168,76,0.18);
+        }
+        .spec { display: flex; flex-direction: column; gap: 7px; }
+        .spec__label {
+            font-size: 0.52rem;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+        .spec__value {
+            font-family: var(--font-serif);
+            font-size: 1.05rem;
+            color: var(--ivory);
+        }
+
+        /* ===== PROCESS ===== */
+        .process { background: var(--black); padding: 120px 0; }
+        .process__header { text-align: center; margin-bottom: 88px; }
+        .process__steps {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            position: relative;
+        }
+        .process__steps::before {
+            content: '';
+            position: absolute;
+            top: 27px;
+            left: calc(16.67% + 16px);
+            right: calc(16.67% + 16px);
+            height: 1px;
+            background: linear-gradient(to right, var(--gold), rgba(201,168,76,0.25), var(--gold));
+        }
+        .step {
+            padding: 0 44px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .step__number {
+            width: 54px; height: 54px;
+            border: 1px solid var(--gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            color: var(--gold);
+            margin-bottom: 36px;
+            background: var(--black);
+            position: relative;
+            z-index: 1;
+        }
+        .step__title {
+            font-family: var(--font-serif);
+            font-size: 1.35rem;
+            color: var(--ivory);
+            margin-bottom: 18px;
+        }
+        .step__text {
+            font-size: 0.78rem;
+            font-weight: 300;
+            line-height: 1.88;
+            color: var(--gray-light);
+        }
+
+        /* ===== STORY ===== */
+        .story { background: var(--dark); overflow: hidden; }
+        .story__inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 680px;
+        }
+        .story__image { position: relative; overflow: hidden; }
+        .story__image img { transition: transform 0.8s ease; }
+        .story__image:hover img { transform: scale(1.04); }
+        .story__content {
+            padding: 100px 88px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        .story__quote {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-style: italic;
+            color: var(--gold-light);
+            line-height: 1.7;
+            margin: 36px 0;
+            padding-left: 28px;
+            border-left: 1px solid rgba(201,168,76,0.5);
+        }
+
+        /* ===== TESTIMONIALS ===== */
+        .testimonials { background: var(--black); padding: 120px 0; }
+        .testimonials__header { text-align: center; margin-bottom: 80px; }
+        .testimonials__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: rgba(201,168,76,0.1);
+        }
+        .testimonial {
+            background: var(--black);
+            padding: 56px 48px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            transition: background 0.3s;
+        }
+        .testimonial:hover { background: var(--dark-2); }
+        .testimonial__stars { display: flex; gap: 3px; color: var(--gold); font-size: 0.7rem; }
+        .testimonial__text {
+            font-family: var(--font-serif);
+            font-size: 1.08rem;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.72;
+            color: var(--ivory);
+            flex: 1;
+        }
+        .testimonial__author {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(201,168,76,0.18);
+        }
+        .testimonial__name {
+            font-family: var(--font-sans);
+            font-size: 0.68rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            color: var(--ivory);
+        }
+        .testimonial__location { font-size: 0.64rem; color: var(--gray); }
+
+        /* ===== CTA BAND ===== */
+        .cta-band {
+            position: relative;
+            padding: 160px 0;
+            overflow: hidden;
+        }
+        .cta-band__bg {
+            position: absolute; inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1800&q=85');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .cta-band__overlay {
+            position: absolute; inset: 0;
+            background: rgba(8,8,8,0.82);
+        }
+        .cta-band__content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 48px;
+        }
+        .cta-band__title {
+            font-family: var(--font-serif);
+            font-size: clamp(2.6rem, 5vw, 4.2rem);
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+        .cta-band__title em { color: var(--gold-light); font-style: italic; }
+        .cta-band__sub {
+            font-size: 0.8rem;
+            color: var(--gray-light);
+            margin-bottom: 52px;
+            line-height: 1.9;
+        }
+
+        /* ===== NEWSLETTER ===== */
+        .newsletter {
+            background: var(--dark);
+            padding: 80px 0;
+            border-top:    1px solid rgba(201,168,76,0.12);
+            border-bottom: 1px solid rgba(201,168,76,0.12);
+        }
+        .newsletter__inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 64px;
+        }
+        .newsletter__text { flex-shrink: 0; }
+        .newsletter__form {
+            display: flex;
+            flex: 1;
+            max-width: 520px;
+        }
+        .newsletter__input {
+            flex: 1;
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(201,168,76,0.28);
+            border-right: none;
+            padding: 16px 24px;
+            color: var(--ivory);
+            font-family: var(--font-sans);
+            font-size: 0.75rem;
+            font-weight: 300;
+            letter-spacing: 0.04em;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .newsletter__input::placeholder { color: var(--gray); }
+        .newsletter__input:focus { border-color: var(--gold); }
+        .newsletter__submit {
+            background: var(--gold);
+            border: 1px solid var(--gold);
+            color: var(--black);
+            padding: 16px 36px;
+            font-family: var(--font-sans);
+            font-size: 0.6rem;
+            font-weight: 600;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .newsletter__submit:hover { background: transparent; color: var(--gold); }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--black);
+            padding: 88px 0 44px;
+            border-top: 1px solid rgba(201,168,76,0.08);
+        }
+        .footer__top {
+            display: grid;
+            grid-template-columns: 2.2fr 1fr 1fr 1fr;
+            gap: 64px;
+            padding-bottom: 64px;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+        .footer__brand-name {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 300;
+            letter-spacing: 0.1em;
+            color: var(--ivory);
+            margin-bottom: 5px;
+        }
+        .footer__brand-tagline {
+            font-size: 0.52rem;
+            letter-spacing: 0.32em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 28px;
+        }
+        .footer__brand-desc {
+            font-size: 0.78rem;
+            color: var(--gray);
+            line-height: 1.85;
+            max-width: 310px;
+            margin-bottom: 36px;
+        }
+        .footer__social { display: flex; gap: 12px; }
+        .footer__social-link {
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            font-size: 0.68rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            font-family: var(--font-sans);
+        }
+        .footer__social-link:hover { border-color: var(--gold); color: var(--gold); }
+        .footer__col-title {
+            font-size: 0.54rem;
+            font-weight: 600;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            color: var(--ivory);
+            margin-bottom: 28px;
+        }
+        .footer__links { display: flex; flex-direction: column; gap: 14px; }
+        .footer__link { font-size: 0.78rem; color: var(--gray); transition: color 0.2s; }
+        .footer__link:hover { color: var(--gold); }
+        .footer__bottom {
+            padding-top: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .footer__copy { font-size: 0.68rem; color: var(--gray); letter-spacing: 0.05em; }
+        .footer__copy span { color: var(--gold); }
+
+        /* ===== SCROLL REVEAL ===== */
+        [data-reveal] {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.75s ease, transform 0.75s ease;
+        }
+        [data-reveal].revealed           { opacity: 1; transform: translateY(0); }
+        [data-reveal][data-delay="1"]    { transition-delay: 0.1s; }
+        [data-reveal][data-delay="2"]    { transition-delay: 0.2s; }
+        [data-reveal][data-delay="3"]    { transition-delay: 0.35s; }
+        [data-reveal][data-delay="4"]    { transition-delay: 0.5s; }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .featured__inner { grid-template-columns: 1fr; }
+            .featured__image { height: 420px; }
+            .story__inner    { grid-template-columns: 1fr; }
+            .story__image    { height: 420px; }
+            .footer__top     { grid-template-columns: 1fr 1fr; gap: 48px; }
+            .collections__grid { grid-template-columns: 1fr 1fr; }
+            .col-card:nth-child(n) { grid-column: span 1; }
+            .col-card:nth-child(5) { grid-column: span 2; }
+            .col-card:nth-child(1) .col-card__img,
+            .col-card:nth-child(2) .col-card__img { height: 380px; }
+        }
+        @media (max-width: 768px) {
+            .container { padding: 0 24px; }
+            .nav        { padding: 18px 24px; }
+            .nav-links  { display: none; }
+            .hero__content { padding: 0 24px 80px; }
+            .promise__grid    { grid-template-columns: 1fr; }
+            .promise__card    { padding: 44px 32px; }
+            .process__steps   { grid-template-columns: 1fr; gap: 0; }
+            .process__steps::before { display: none; }
+            .step      { padding: 0 12px 56px; }
+            .testimonials__grid  { grid-template-columns: 1fr; }
+            .newsletter__inner   { flex-direction: column; }
+            .newsletter__form    { width: 100%; max-width: 100%; }
+            .footer__top         { grid-template-columns: 1fr; }
+            .story__content      { padding: 64px 32px; }
+            .collections__grid   { grid-template-columns: 1fr; }
+            .col-card:nth-child(n) { grid-column: span 1; }
+            .col-card:nth-child(1) .col-card__img,
+            .col-card:nth-child(2) .col-card__img,
+            .col-card:nth-child(3) .col-card__img,
+            .col-card:nth-child(4) .col-card__img,
+            .col-card:nth-child(5) .col-card__img { height: 280px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVIGATION ===== -->
+    <nav class="nav" id="mainNav">
+        <a href="#" class="nav-logo">
+            <span class="nav-logo__main">Aliments Distinction</span>
+            <span class="nav-logo__sub">Épicerie Fine · Livraison à domicile</span>
+        </a>
+        <ul class="nav-links">
+            <li><a class="nav-link" href="#collections">Nos produits</a></li>
+            <li><a class="nav-link" href="#story">Notre histoire</a></li>
+            <li><a class="nav-link" href="#process">Comment ça marche</a></li>
+            <li><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+            <!-- Search icon -->
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+            <!-- Account icon -->
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <!-- Cart icon -->
+            <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero__bg"></div>
+        <div class="hero__overlay"></div>
+        <div class="hero__content">
+            <div class="hero__eyebrow">
+                <span class="t-label">Épicerie Fine · Québec</span>
+            </div>
+            <h1 class="hero__title">
+                L'excellence<br>
+                <em>à votre table</em>
+            </h1>
+            <p class="hero__subtitle">
+                Des coupes exceptionnelles, des fruits de mer d'exception et des produits gourmets du terroir québécois — livrés chez vous, à la hauteur de vos exigences.
+            </p>
+            <div class="hero__ctas">
+                <a href="#collections" class="btn btn-gold">Découvrir nos produits</a>
+                <a href="#story" class="btn btn-outline">Notre histoire</a>
+            </div>
+        </div>
+        <div class="hero__scroll">
+            <div class="scroll-line"></div>
+            <span>Défiler</span>
+        </div>
+    </section>
+
+    <!-- ===== MARQUEE ===== -->
+    <div class="ticker" aria-hidden="true">
+        <div class="ticker__inner">
+            <span class="ticker__item">Bœuf Canadian Prime vieilli 50 jours</span>
+            <span class="ticker__item">Fruits de mer du Québec</span>
+            <span class="ticker__item">Livraison à domicile</span>
+            <span class="ticker__item">Veau de lait du Québec</span>
+            <span class="ticker__item">Emballage sous-vide Cryovac</span>
+            <span class="ticker__item">Sans contrat de service</span>
+            <span class="ticker__item">Agneau du Québec</span>
+            <span class="ticker__item">Produits gourmets sélectionnés</span>
+            <!-- duplicate for seamless loop -->
+            <span class="ticker__item">Bœuf Canadian Prime vieilli 50 jours</span>
+            <span class="ticker__item">Fruits de mer du Québec</span>
+            <span class="ticker__item">Livraison à domicile</span>
+            <span class="ticker__item">Veau de lait du Québec</span>
+            <span class="ticker__item">Emballage sous-vide Cryovac</span>
+            <span class="ticker__item">Sans contrat de service</span>
+            <span class="ticker__item">Agneau du Québec</span>
+            <span class="ticker__item">Produits gourmets sélectionnés</span>
+        </div>
+    </div>
+
+    <!-- ===== PROMISE ===== -->
+    <section class="promise" id="promise">
+        <div class="container">
+            <div class="promise__header">
+                <span class="t-label">Notre promesse</span>
+                <span class="gold-line gold-line--center"></span>
+                <h2 class="t-h2">Pourquoi choisir<br>Aliments Distinction</h2>
+            </div>
+            <div class="promise__grid">
+                <div class="promise__card" data-reveal>
+                    <svg class="promise__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                    </svg>
+                    <h3 class="promise__title">Sélection Prime</h3>
+                    <span class="gold-line"></span>
+                    <p class="promise__text">Uniquement du bœuf certifié Canadian Prime — le grade attribué à moins de 2 % des bovins canadiens. Chaque coupe est vieillie à sec 50 jours pour une tendreté et une complexité aromatique inégalées.</p>
+                </div>
+                <div class="promise__card" data-reveal data-delay="2">
+                    <svg class="promise__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                        <polyline points="9 22 9 12 15 12 15 22"/>
+                    </svg>
+                    <h3 class="promise__title">Terroir Québécois</h3>
+                    <span class="gold-line"></span>
+                    <p class="promise__text">Du homard sauvage de la Gaspésie au veau de lait de nos fermes locales — chaque achat soutient une agriculture éthique et durable, ancrée dans le terroir qui nous définit.</p>
+                </div>
+                <div class="promise__card" data-reveal data-delay="3">
+                    <svg class="promise__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
+                        <rect x="1" y="3" width="15" height="13"/>
+                        <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                        <circle cx="5.5" cy="18.5" r="2.5"/>
+                        <circle cx="18.5" cy="18.5" r="2.5"/>
+                    </svg>
+                    <h3 class="promise__title">Livraison Maison</h3>
+                    <span class="gold-line"></span>
+                    <p class="promise__text">Flash-surgelés et emballés sous vide Cryovac, vos produits arrivent dans un état parfait, prêts pour la cuisson sous-vide. Payez à la livraison. Aucun contrat, aucune surprise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COLLECTIONS ===== -->
+    <section class="collections" id="collections">
+        <div class="container">
+            <div class="collections__header" data-reveal>
+                <div>
+                    <span class="t-label">Nos collections</span>
+                    <span class="gold-line"></span>
+                    <h2 class="t-h2">Une sélection<br>d'exception</h2>
+                </div>
+                <a href="#" class="btn btn-ghost-gold">Voir tous les produits</a>
+            </div>
+            <div class="collections__grid">
+                <a href="#" class="col-card">
+                    <div class="col-card__img">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=85" alt="Viandes Prime">
+                    </div>
+                    <div class="col-card__overlay"></div>
+                    <div class="col-card__content">
+                        <span class="col-card__label">Sélection Prime</span>
+                        <h3 class="col-card__title">Viandes<br>d'exception</h3>
+                        <span class="col-card__cta">Explorer</span>
+                    </div>
+                </a>
+                <a href="#" class="col-card">
+                    <div class="col-card__img">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=1100&q=85" alt="Fruits de mer">
+                    </div>
+                    <div class="col-card__overlay"></div>
+                    <div class="col-card__content">
+                        <span class="col-card__label">Produits de la mer</span>
+                        <h3 class="col-card__title">Fruits de mer<br>& Poissons</h3>
+                        <span class="col-card__cta">Explorer</span>
+                    </div>
+                </a>
+                <a href="#" class="col-card">
+                    <div class="col-card__img">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=85" alt="Veau & Agneau">
+                    </div>
+                    <div class="col-card__overlay"></div>
+                    <div class="col-card__content">
+                        <span class="col-card__label">Terroir québécois</span>
+                        <h3 class="col-card__title">Veau · Volaille<br>& Agneau</h3>
+                        <span class="col-card__cta">Explorer</span>
+                    </div>
+                </a>
+                <a href="#" class="col-card">
+                    <div class="col-card__img">
+                        <img src="https://images.unsplash.com/photo-1490818387583-1baba5e638af?w=700&q=85" alt="Produits Gourmets">
+                    </div>
+                    <div class="col-card__overlay"></div>
+                    <div class="col-card__content">
+                        <span class="col-card__label">Art de vivre</span>
+                        <h3 class="col-card__title">Produits<br>Gourmets</h3>
+                        <span class="col-card__cta">Explorer</span>
+                    </div>
+                </a>
+                <a href="#" class="col-card">
+                    <div class="col-card__img">
+                        <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?w=700&q=85" alt="Desserts">
+                    </div>
+                    <div class="col-card__overlay"></div>
+                    <div class="col-card__content">
+                        <span class="col-card__label">Finales sucrées</span>
+                        <h3 class="col-card__title">Desserts<br>Artisanaux</h3>
+                        <span class="col-card__cta">Explorer</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED PRODUCT ===== -->
+    <section class="featured">
+        <div class="container">
+            <div class="featured__inner">
+                <div class="featured__image" data-reveal>
+                    <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=900&q=85" alt="Contre-filet Canadian Prime vieilli 50 jours" style="height:100%; object-fit:cover;">
+                    <div class="featured__badge">
+                        <span class="featured__badge-label">Vieilli</span>
+                        <span class="featured__badge-value">50 jours</span>
+                    </div>
+                </div>
+                <div class="featured__content" data-reveal data-delay="2">
+                    <span class="t-label">Produit signature</span>
+                    <span class="gold-line"></span>
+                    <h2 class="t-h2">Contre-filet<br>Canadian Prime</h2>
+                    <p class="t-body" style="margin-top: 24px;">
+                        La pièce maîtresse de notre sélection. Certifiée Canadian Prime — le grade attribué à moins de 2 % des bovins canadiens — cette coupe est vieillie à sec 50 jours pour développer une richesse aromatique profonde et une tendreté qui fond en bouche. Emballée sous vide Cryovac, elle est prête pour la cuisson sous-vide ou la poêle en fonte.
+                    </p>
+                    <div class="featured__specs">
+                        <div class="spec">
+                            <span class="spec__label">Grade</span>
+                            <span class="spec__value">Canadian Prime</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec__label">Vieillissement</span>
+                            <span class="spec__value">50 jours</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec__label">Emballage</span>
+                            <span class="spec__value">Cryovac sous-vide</span>
+                        </div>
+                        <div class="spec">
+                            <span class="spec__label">Prix</span>
+                            <span class="spec__value" style="color: var(--gold);">225 $</span>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-gold">Ajouter au panier</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PROCESS ===== -->
+    <section class="process" id="process">
+        <div class="container">
+            <div class="process__header" data-reveal>
+                <span class="t-label">De la ferme à votre porte</span>
+                <span class="gold-line gold-line--center"></span>
+                <h2 class="t-h2">Une chaîne d'excellence<br>sans compromis</h2>
+            </div>
+            <div class="process__steps">
+                <div class="step" data-reveal>
+                    <div class="step__number">01</div>
+                    <h3 class="step__title">Sélection rigoureuse</h3>
+                    <p class="step__text">Chaque pièce est choisie à la main selon nos standards exigeants. Seuls les meilleurs grades, les producteurs les plus réputés et les produits de saison entrent dans notre catalogue.</p>
+                </div>
+                <div class="step" data-reveal data-delay="2">
+                    <div class="step__number">02</div>
+                    <h3 class="step__title">Flash-surgélation Cryovac</h3>
+                    <p class="step__text">Immédiatement après découpe, chaque produit est flash-surgelé pour préserver ses qualités nutritives et organoleptiques, puis emballé sous vide Cryovac — compatible avec la cuisson sous-vide.</p>
+                </div>
+                <div class="step" data-reveal data-delay="3">
+                    <div class="step__number">03</div>
+                    <h3 class="step__title">Livraison à votre porte</h3>
+                    <p class="step__text">Commandez en ligne ou par téléphone, on livre directement chez vous. Payez à la livraison — Interac, Visa ou Mastercard. Sans contrat, sans engagement. Seulement l'excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== STORY ===== -->
+    <section class="story" id="story">
+        <div class="story__inner">
+            <div class="story__image">
+                <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1000&q=85" alt="L'histoire d'Aliments Distinction">
+            </div>
+            <div class="story__content">
+                <span class="t-label">Notre histoire</span>
+                <span class="gold-line"></span>
+                <h2 class="t-h2">Une passion<br>pour l'excellence</h2>
+                <blockquote class="story__quote">
+                    « Nous croyons que le repas en famille mérite les mêmes ingrédients que les grands restaurants — sans les compromis. »
+                </blockquote>
+                <p class="t-body">
+                    Fondée avec une vision claire, Aliments Distinction s'est donné pour mission de rendre accessible ce que les grands chefs exigent. Du bœuf Canadian Prime certifié au homard sauvage de la Gaspésie, nous sélectionnons chaque produit avec le soin d'un sommelier.
+                </p>
+                <br>
+                <p class="t-body">
+                    Notre réseau de producteurs québécois de confiance garantit la traçabilité complète et le soutien de notre économie locale — parce que l'excellence et les valeurs ne sont pas incompatibles.
+                </p>
+                <a href="#" class="btn btn-ghost-gold" style="margin-top: 40px;">Lire notre histoire</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TESTIMONIALS ===== -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="testimonials__header" data-reveal>
+                <span class="t-label">Ce que disent nos clients</span>
+                <span class="gold-line gold-line--center"></span>
+                <h2 class="t-h2">L'excellence,<br>confirmée par ceux qui la vivent</h2>
+            </div>
+            <div class="testimonials__grid">
+                <div class="testimonial" data-reveal>
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">« Le contre-filet Prime est tout simplement le meilleur bœuf que j'ai cuisiné à la maison. La qualité rivalise avec les meilleurs steakhouses de Montréal. Je ne peux plus m'en passer. »</p>
+                    <div class="testimonial__author">
+                        <span class="testimonial__name">Marie-Ève L.</span>
+                        <span class="testimonial__location">Laval, Québec</span>
+                    </div>
+                </div>
+                <div class="testimonial" data-reveal data-delay="2">
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">« La chair de crabe des neiges était incroyable — fraîche, généreuse, un emballage impeccable. La livraison s'est faite exactement comme promis. Un service absolument irréprochable. »</p>
+                    <div class="testimonial__author">
+                        <span class="testimonial__name">François D.</span>
+                        <span class="testimonial__location">Brossard, Québec</span>
+                    </div>
+                </div>
+                <div class="testimonial" data-reveal data-delay="3">
+                    <div class="testimonial__stars">★★★★★</div>
+                    <p class="testimonial__text">« Le carré d'agneau du Québec était une révélation. Tendre, savoureux, et la cuisson sous-vide avec le Cryovac était un jeu d'enfant. Je recommande à tous mes amis gourmets. »</p>
+                    <div class="testimonial__author">
+                        <span class="testimonial__name">Isabelle P.</span>
+                        <span class="testimonial__location">Ville de Québec</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA BAND ===== -->
+    <section class="cta-band">
+        <div class="cta-band__bg"></div>
+        <div class="cta-band__overlay"></div>
+        <div class="cta-band__content" data-reveal>
+            <span class="t-label">Commencez l'expérience</span>
+            <span class="gold-line gold-line--center"></span>
+            <h2 class="cta-band__title">Prêt à élever<br><em>votre table ?</em></h2>
+            <p class="cta-band__sub">Plus de 100 produits d'exception, sélectionnés par des passionnés, livrés à votre porte. Sans contrat, sans compromis.</p>
+            <a href="#collections" class="btn btn-gold">Commander maintenant</a>
+        </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter__inner">
+                <div class="newsletter__text">
+                    <span class="t-label">Restez informé</span>
+                    <span class="gold-line"></span>
+                    <h3 class="t-h3">Nouveautés, recettes<br>& offres exclusives</h3>
+                </div>
+                <form class="newsletter__form" onsubmit="return false;">
+                    <input class="newsletter__input" type="email" placeholder="Votre adresse courriel" aria-label="Courriel">
+                    <button class="newsletter__submit" type="submit">S'inscrire</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" id="contact">
+        <div class="container">
+            <div class="footer__top">
+                <div>
+                    <div class="footer__brand-name">Aliments Distinction</div>
+                    <div class="footer__brand-tagline">L'excellence à votre table</div>
+                    <p class="footer__brand-desc">Des produits d'exception du terroir québécois et canadien, sélectionnés avec soin et livrés directement à votre porte.</p>
+                    <div class="footer__social">
+                        <a href="#" class="footer__social-link" aria-label="Facebook">f</a>
+                        <a href="#" class="footer__social-link" aria-label="Instagram">in</a>
+                    </div>
+                </div>
+                <div>
+                    <div class="footer__col-title">Collections</div>
+                    <ul class="footer__links">
+                        <li><a class="footer__link" href="#">Viandes Prime</a></li>
+                        <li><a class="footer__link" href="#">Fruits de mer & Poissons</a></li>
+                        <li><a class="footer__link" href="#">Veau · Volaille & Agneau</a></li>
+                        <li><a class="footer__link" href="#">Produits Gourmets</a></li>
+                        <li><a class="footer__link" href="#">Desserts Artisanaux</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer__col-title">Informations</div>
+                    <ul class="footer__links">
+                        <li><a class="footer__link" href="#">Notre histoire</a></li>
+                        <li><a class="footer__link" href="#">Comment commander</a></li>
+                        <li><a class="footer__link" href="#">Zones de livraison</a></li>
+                        <li><a class="footer__link" href="#">Foire aux questions</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <div class="footer__col-title">Contact</div>
+                    <ul class="footer__links">
+                        <li><a class="footer__link" href="#">Nous joindre</a></li>
+                        <li><a class="footer__link" href="#">Commander par téléphone</a></li>
+                        <li><a class="footer__link" href="#">Politique de livraison</a></li>
+                        <li><a class="footer__link" href="#">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer__bottom">
+                <p class="footer__copy">© 2024 <span>Aliments Distinction</span>. Tous droits réservés.</p>
+                <p class="footer__copy">Fait avec passion au <span>Québec</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll effect
+        const nav = document.getElementById('mainNav');
+        const onScroll = () => {
+            nav.classList.toggle('scrolled', window.scrollY > 60);
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+
+        // Scroll reveal via IntersectionObserver
+        const revealEls = document.querySelectorAll('[data-reveal]');
+        const revealObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                    revealObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -48px 0px' });
+        revealEls.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
