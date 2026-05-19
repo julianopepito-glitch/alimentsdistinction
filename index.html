@@ -548,30 +548,71 @@
            TEXTURE PLÂTRE + FEUILLES BOTANIQUES
         ============================================= */
 
-        /* --- Texture plâtre (fond stucco) --- */
+        /* --- Texture plâtre visible (stucco coups de spatule) --- */
         .plaster-bg {
             position: relative;
+            isolation: isolate;
         }
+
+        /* Couche 1 : grain + coups de spatule */
         .plaster-bg::before {
             content: '';
             position: absolute;
             inset: 0;
             pointer-events: none;
             z-index: 0;
+
             background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='p'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3CfeComponentTransfer%3E%3CfeFuncA type='linear' slope='0.06'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23p)'/%3E%3C/svg%3E"),
-                radial-gradient(ellipse at 15% 25%, rgba(180,200,175,0.08) 0%, transparent 55%),
-                radial-gradient(ellipse at 85% 75%, rgba(210,200,190,0.07) 0%, transparent 55%),
-                radial-gradient(ellipse at 50% 50%, rgba(255,255,255,0.04) 0%, transparent 70%);
+                /* Grain fractal — comme surface de plâtre */
+                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='600' height='600'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.52' numOctaves='7' seed='14' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.15'/%3E%3C/filter%3E%3Crect width='600' height='600' fill='%23cfc0b0' filter='url(%23f)' opacity='0.72'/%3E%3C/svg%3E"),
+                /* Coups de spatule — lignes diagonales organiques */
+                repeating-linear-gradient(
+                    -11deg,
+                    transparent 0px, transparent 38px,
+                    rgba(165,148,132,0.09) 38px, rgba(165,148,132,0.09) 42px,
+                    transparent 42px, transparent 82px,
+                    rgba(180,162,148,0.07) 82px, rgba(180,162,148,0.07) 87px,
+                    transparent 87px, transparent 130px,
+                    rgba(158,142,128,0.08) 130px, rgba(158,142,128,0.08) 134px
+                ),
+                repeating-linear-gradient(
+                    72deg,
+                    transparent 0px, transparent 55px,
+                    rgba(172,155,140,0.06) 55px, rgba(172,155,140,0.06) 60px,
+                    transparent 60px, transparent 110px,
+                    rgba(162,148,134,0.07) 110px, rgba(162,148,134,0.07) 115px
+                ),
+                repeating-linear-gradient(
+                    31deg,
+                    transparent 0px, transparent 70px,
+                    rgba(155,140,125,0.05) 70px, rgba(155,140,125,0.05) 75px
+                );
+            background-size: 420px 420px, 100% 100%, 100% 100%, 100% 100%;
+            opacity: 0.62;
             mix-blend-mode: multiply;
         }
-        .plaster-bg > * { position: relative; z-index: 1; }
+
+        /* Couche 2 : teinte rosée + lumière centrale */
+        .plaster-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            background:
+                radial-gradient(ellipse 85% 55% at 18% 30%,  rgba(196,133,122,0.09) 0%, transparent 100%),
+                radial-gradient(ellipse 65% 60% at 82% 70%,  rgba(196,133,122,0.07) 0%, transparent 100%),
+                radial-gradient(ellipse 50% 45% at 50% 10%,  rgba(255,248,244,0.18) 0%, transparent 100%),
+                radial-gradient(ellipse 40% 40% at 50% 100%, rgba(196,133,122,0.05) 0%, transparent 100%);
+        }
+
+        .plaster-bg > * { position: relative; z-index: 2; }
 
         /* --- Feuilles botaniques SVG --- */
         .leaf-deco {
             position: absolute;
             pointer-events: none;
-            z-index: 0;
+            z-index: 3;
         }
 
         /* Coin haut-droit : cascade de feuilles */
