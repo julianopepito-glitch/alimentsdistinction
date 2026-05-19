@@ -545,6 +545,190 @@
         .footer__copy span { color: var(--blush); }
 
         /* =============================================
+           FIORITURES DÉCORATIVES
+        ============================================= */
+
+        /* --- Dividers ornés --- */
+        .ornate-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin: 20px 0;
+        }
+        .ornate-divider__line {
+            flex: 0 0 48px;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--blush-light));
+        }
+        .ornate-divider__line--right {
+            background: linear-gradient(to left, transparent, var(--blush-light));
+        }
+        .ornate-divider__center {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--blush);
+            font-size: 0.5rem;
+        }
+        .ornate-divider--center { justify-content: center; }
+
+        /* --- Sunburst SVG déco --- */
+        .sunburst-wrap {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 16px;
+        }
+        .sunburst-wrap svg {
+            width: 48px;
+            height: 48px;
+            color: var(--earth);
+            opacity: 0.7;
+        }
+
+        /* --- Fleurs décoratives SVG --- */
+        .floral-accent {
+            position: absolute;
+            pointer-events: none;
+            z-index: 0;
+        }
+        .floral-accent svg { display: block; }
+
+        /* Position variants */
+        .floral-accent--hero-br {
+            bottom: -10px; right: 0;
+            width: 320px; height: 320px;
+            opacity: 0.22;
+        }
+        .floral-accent--hero-tl {
+            top: 60px; left: 0;
+            width: 180px; height: 180px;
+            opacity: 0.14;
+        }
+        .floral-accent--section-tr {
+            top: -30px; right: -20px;
+            width: 260px; height: 260px;
+            opacity: 0.15;
+        }
+        .floral-accent--section-bl {
+            bottom: -30px; left: -20px;
+            width: 240px; height: 240px;
+            opacity: 0.13;
+        }
+        .floral-accent--cta-tl {
+            top: -20px; left: -20px;
+            width: 300px; height: 300px;
+            opacity: 0.18;
+        }
+        .floral-accent--cta-br {
+            bottom: -20px; right: -20px;
+            width: 300px; height: 300px;
+            opacity: 0.18;
+        }
+
+        /* --- Badge circulaire VIP / Premium --- */
+        .round-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 3px;
+            border-radius: 50%;
+            border: 1.5px solid var(--blush);
+            background: var(--white);
+            box-shadow: 0 4px 20px rgba(196,133,122,0.18);
+            text-align: center;
+        }
+        .round-badge--sm {
+            width: 80px; height: 80px;
+            padding: 8px;
+        }
+        .round-badge--md {
+            width: 108px; height: 108px;
+            padding: 12px;
+        }
+        .round-badge__crown { font-size: 1rem; color: var(--blush); line-height: 1; }
+        .round-badge__title {
+            font-family: var(--font-serif);
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: var(--charcoal);
+            line-height: 1.1;
+        }
+        .round-badge__sub {
+            font-size: 0.48rem;
+            font-weight: 500;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--blush);
+        }
+        .round-badge__stars { font-size: 0.45rem; color: var(--earth); letter-spacing: 2px; }
+
+        /* --- Cadre décoratif (ornate frame) --- */
+        .ornate-frame {
+            position: relative;
+            padding: 40px 48px;
+            border: 1px solid rgba(196,133,122,0.25);
+            border-radius: 4px;
+        }
+        .ornate-frame::before,
+        .ornate-frame::after {
+            content: '◆';
+            position: absolute;
+            font-size: 0.5rem;
+            color: var(--blush);
+        }
+        .ornate-frame::before { top: -6px; left: 50%; transform: translateX(-50%); background: var(--white); padding: 0 6px; }
+        .ornate-frame::after  { bottom: -6px; left: 50%; transform: translateX(-50%); background: var(--white); padding: 0 6px; }
+        .ornate-frame-corner {
+            position: absolute;
+            width: 16px; height: 16px;
+            border-color: var(--blush-light);
+            border-style: solid;
+        }
+        .ornate-frame-corner--tl { top: 6px;  left: 6px;  border-width: 1px 0 0 1px; }
+        .ornate-frame-corner--tr { top: 6px;  right: 6px; border-width: 1px 1px 0 0; }
+        .ornate-frame-corner--bl { bottom: 6px; left: 6px;  border-width: 0 0 1px 1px; }
+        .ornate-frame-corner--br { bottom: 6px; right: 6px; border-width: 0 1px 1px 0; }
+
+        /* --- Wave underline décoration --- */
+        .wave-text {
+            position: relative;
+            display: inline-block;
+        }
+        .wave-text::after {
+            content: '';
+            position: absolute;
+            bottom: -6px; left: 0; right: 0;
+            height: 3px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='3' viewBox='0 0 60 3'%3E%3Cpath d='M0 1.5 Q7.5 0 15 1.5 Q22.5 3 30 1.5 Q37.5 0 45 1.5 Q52.5 3 60 1.5' stroke='%23C4857A' stroke-width='1' fill='none' opacity='0.7'/%3E%3C/svg%3E") repeat-x center;
+            background-size: 60px 3px;
+        }
+
+        /* --- Section title with ornament --- */
+        .section-title-ornate {
+            text-align: center;
+        }
+        .section-title-ornate .t-label { display: block; margin-bottom: 14px; }
+
+        /* --- Leaf divider (horizontal botanical) --- */
+        .leaf-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 24px 0;
+        }
+        .leaf-divider__leaf {
+            width: 20px; height: 10px;
+            fill: none;
+            stroke: var(--blush-light);
+            stroke-width: 1;
+        }
+        .leaf-divider__dot { width: 5px; height: 5px; border-radius: 50%; background: var(--blush); }
+        .leaf-divider__line { flex: 0 0 40px; height: 1px; background: var(--border); }
+
+        /* =============================================
            SCROLL REVEAL
         ============================================= */
         [data-reveal] { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -618,16 +802,52 @@
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="hero__left">
-            <svg class="hero__ornament" viewBox="0 0 80 80" fill="none">
-                <circle cx="40" cy="40" r="38" stroke="#C4857A" stroke-width="1"/>
-                <circle cx="40" cy="40" r="28" stroke="#C4857A" stroke-width="0.5" stroke-dasharray="2 4"/>
-            </svg>
+            <!-- Floral coin haut gauche -->
+            <div class="floral-accent floral-accent--hero-tl" aria-hidden="true">
+                <svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="30" cy="30" r="14" fill="#C4857A" opacity="0.35"/>
+                    <circle cx="55" cy="18" r="9" fill="#DBAAA4" opacity="0.4"/>
+                    <circle cx="18" cy="58" r="9" fill="#DBAAA4" opacity="0.4"/>
+                    <circle cx="72" cy="36" r="6" fill="#C4857A" opacity="0.25"/>
+                    <circle cx="36" cy="76" r="6" fill="#C4857A" opacity="0.25"/>
+                    <path d="M30 30 Q55 10 80 30" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    <path d="M30 30 Q10 55 30 80" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.5"/>
+                    <ellipse cx="80" cy="30" rx="8" ry="4" fill="#8BA888" opacity="0.4" transform="rotate(-30 80 30)"/>
+                    <ellipse cx="30" cy="80" rx="8" ry="4" fill="#8BA888" opacity="0.4" transform="rotate(60 30 80)"/>
+                </svg>
+            </div>
+
+            <!-- Sunburst + label -->
+            <div class="sunburst-wrap">
+                <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="24" cy="24" r="7" fill="#B8956A" opacity="0.8"/>
+                    <g stroke="#B8956A" stroke-width="1.2" opacity="0.7">
+                        <line x1="24" y1="4"  x2="24" y2="10"/>
+                        <line x1="24" y1="38" x2="24" y2="44"/>
+                        <line x1="4"  y1="24" x2="10" y2="24"/>
+                        <line x1="38" y1="24" x2="44" y2="24"/>
+                        <line x1="9"  y1="9"  x2="13" y2="13"/>
+                        <line x1="35" y1="35" x2="39" y2="39"/>
+                        <line x1="39" y1="9"  x2="35" y2="13"/>
+                        <line x1="13" y1="35" x2="9"  y2="39"/>
+                    </g>
+                </svg>
+            </div>
+
             <div class="hero__eyebrow">
                 <span class="t-label">Épicerie Fine · Québec</span>
             </div>
             <h1 class="t-h1 hero__title">
                 La table<br>que vous <em>méritez</em>
             </h1>
+
+            <!-- Ornate divider sous le titre -->
+            <div class="ornate-divider" style="margin: 18px 0;">
+                <div class="ornate-divider__line"></div>
+                <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                <div class="ornate-divider__line ornate-divider__line--right"></div>
+            </div>
+
             <p class="hero__subtitle">
                 Des produits d'exception — bœuf Canadian Prime, fruits de mer du Québec, veau de lait — sélectionnés pour les palais exigeants et livrés directement chez vous.
             </p>
@@ -653,9 +873,37 @@
         <div class="hero__right">
             <img src="https://images.unsplash.com/photo-1615937691194-97dbd3f3dc29?w=1200&q=90" alt="Produits premium Aliments Distinction">
             <div class="hero__right-overlay"></div>
+
+            <!-- Floral coin bas droite sur la photo -->
+            <div class="floral-accent floral-accent--hero-br" aria-hidden="true">
+                <svg viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Grandes fleurs -->
+                    <circle cx="260" cy="260" r="36" fill="#F5E8E6" opacity="0.8"/>
+                    <circle cx="220" cy="240" r="20" fill="#DBAAA4" opacity="0.6"/>
+                    <circle cx="280" cy="220" r="16" fill="#DBAAA4" opacity="0.5"/>
+                    <circle cx="240" cy="200" r="12" fill="#C4857A" opacity="0.4"/>
+                    <circle cx="295" cy="260" r="22" fill="#F5E8E6" opacity="0.7"/>
+                    <!-- Petites fleurs -->
+                    <circle cx="180" cy="270" r="10" fill="#DBAAA4" opacity="0.4"/>
+                    <circle cx="260" cy="180" r="8"  fill="#DBAAA4" opacity="0.3"/>
+                    <!-- Tiges / feuilles -->
+                    <path d="M200 320 Q230 270 260 260" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
+                    <path d="M320 200 Q280 230 260 260" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.6"/>
+                    <ellipse cx="245" cy="268" rx="18" ry="7" fill="#8BA888" opacity="0.35" transform="rotate(-45 245 268)"/>
+                    <ellipse cx="270" cy="248" rx="14" ry="6" fill="#8BA888" opacity="0.3" transform="rotate(30 270 248)"/>
+                    <!-- Pétales -->
+                    <ellipse cx="260" cy="230" rx="8" ry="14" fill="#F5E8E6" opacity="0.7" transform="rotate(-20 260 230)"/>
+                    <ellipse cx="240" cy="255" rx="8" ry="14" fill="#F5E8E6" opacity="0.7" transform="rotate(60 240 255)"/>
+                    <ellipse cx="280" cy="255" rx="8" ry="14" fill="#F5E8E6" opacity="0.7" transform="rotate(-60 280 255)"/>
+                </svg>
+            </div>
+
+            <!-- Badge circulaire Premium -->
             <div class="hero__badge">
-                <div class="hero__badge-icon">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <div class="round-badge round-badge--sm">
+                    <span class="round-badge__crown">♛</span>
+                    <span class="round-badge__title">Prime</span>
+                    <span class="round-badge__stars">★ ★ ★</span>
                 </div>
                 <div>
                     <div class="hero__badge-title">Canadian Prime</div>
@@ -699,7 +947,11 @@
             <div class="collections__header" data-reveal>
                 <div>
                     <span class="t-label">Nos collections</span>
-                    <div class="divider"><span class="divider__dot">◆</span></div>
+                    <div class="ornate-divider">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                     <h2 class="t-h2">Une sélection <em style="font-style:italic;color:var(--blush)">d'exception</em></h2>
                 </div>
                 <a href="#" class="btn btn-outline-blush">Voir tout le catalogue</a>
@@ -765,11 +1017,40 @@
     </section>
 
     <!-- ===== PROMISE ===== -->
-    <section class="promise" id="promise">
+    <section class="promise" id="promise" style="position:relative; overflow:hidden;">
+        <!-- Floral décoration coin haut droit -->
+        <div class="floral-accent floral-accent--section-tr" aria-hidden="true">
+            <svg viewBox="0 0 260 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="200" cy="60"  r="28" fill="#DBAAA4" opacity="0.5"/>
+                <circle cx="230" cy="90"  r="18" fill="#C4857A" opacity="0.4"/>
+                <circle cx="175" cy="85"  r="14" fill="#F5E8E6" opacity="0.7"/>
+                <circle cx="240" cy="130" r="12" fill="#DBAAA4" opacity="0.4"/>
+                <circle cx="215" cy="35"  r="10" fill="#C4857A" opacity="0.3"/>
+                <path d="M160 100 Q190 60 220 60" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.55"/>
+                <path d="M220 60 Q250 50 245 90" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.55"/>
+                <ellipse cx="205" cy="68" rx="16" ry="6" fill="#8BA888" opacity="0.35" transform="rotate(-40 205 68)"/>
+                <ellipse cx="232" cy="80" rx="12" ry="5" fill="#8BA888" opacity="0.3" transform="rotate(20 232 80)"/>
+            </svg>
+        </div>
+        <!-- Floral décoration coin bas gauche -->
+        <div class="floral-accent floral-accent--section-bl" aria-hidden="true">
+            <svg viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40"  cy="200" r="26" fill="#DBAAA4" opacity="0.45"/>
+                <circle cx="70"  cy="220" r="16" fill="#F5E8E6" opacity="0.65"/>
+                <circle cx="20"  cy="170" r="14" fill="#C4857A" opacity="0.35"/>
+                <circle cx="90"  cy="195" r="10" fill="#DBAAA4" opacity="0.35"/>
+                <path d="M20 220 Q40 185 75 190" stroke="#8BA888" stroke-width="1.5" fill="none" opacity="0.5"/>
+                <ellipse cx="50"  cy="205" rx="14" ry="5" fill="#8BA888" opacity="0.32" transform="rotate(30 50 205)"/>
+            </svg>
+        </div>
         <div class="container">
             <div class="promise__header" data-reveal>
                 <span class="t-label">Nos engagements</span>
-                <div class="divider divider--center"><span class="divider__dot">◆</span></div>
+                <div class="ornate-divider ornate-divider--center">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                 <h2 class="t-h2">Pourquoi Aliments<br>Distinction ?</h2>
             </div>
             <div class="promise__grid">
@@ -825,7 +1106,11 @@
                 </div>
                 <div data-reveal data-d="2">
                     <span class="t-label">Coup de cœur</span>
-                    <div class="divider"><span class="divider__dot">◆</span></div>
+                    <div class="ornate-divider">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                     <h2 class="t-h2">Contre-filet<br>Canadian Prime</h2>
                     <div class="featured__price">225 $</div>
                     <p class="t-body">La pièce maîtresse de notre sélection. Certifiée Canadian Prime — attribuée à moins de 2 % des bovins canadiens — cette coupe est vieillie à sec 50 jours pour développer une richesse aromatique profonde et une tendreté fondante. Emballée sous vide Cryovac, prête pour votre cuisson sous-vide.</p>
@@ -849,7 +1134,11 @@
             </div>
             <div class="story__content">
                 <span class="t-label">Notre histoire</span>
-                <div class="divider"><span class="divider__dot">◆</span></div>
+                <div class="ornate-divider">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                 <h2 class="t-h2">Une passion pour<br><em style="font-style:italic;color:var(--blush)">le bien manger</em></h2>
                 <blockquote class="story__quote">« Nous croyons que chaque repas mérite les mêmes ingrédients que les grands restaurants — sans compromis sur la qualité, ni sur l'origine. »</blockquote>
                 <p class="t-body">Fondée avec une vision claire, Aliments Distinction s'est donné pour mission de rendre accessible ce que les grands chefs exigent. Nous sélectionnons chaque produit avec le soin d'un chef étoilé, pour votre table de tous les jours.</p>
@@ -893,7 +1182,11 @@
         <div class="container">
             <div class="process__header" data-reveal>
                 <span class="t-label">De la ferme à votre table</span>
-                <div class="divider divider--center"><span class="divider__dot">◆</span></div>
+                <div class="ornate-divider ornate-divider--center">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                 <h2 class="t-h2">Une fraîcheur<br>sans compromis</h2>
             </div>
             <div class="process__steps">
@@ -924,7 +1217,11 @@
         <div class="container">
             <div class="testimonials__header" data-reveal>
                 <span class="t-label">Ils nous font confiance</span>
-                <div class="divider divider--center"><span class="divider__dot">◆</span></div>
+                <div class="ornate-divider ornate-divider--center">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
                 <h2 class="t-h2">L'excellence,<br>vécue au quotidien</h2>
             </div>
             <div class="testimonials__grid">
@@ -957,10 +1254,47 @@
     </section>
 
     <!-- ===== CTA ===== -->
-    <section class="cta">
+    <section class="cta" style="position:relative; overflow:hidden;">
         <div class="cta__bg"></div>
         <div class="cta__overlay"></div>
+
+        <!-- Floral décorations coins -->
+        <div class="floral-accent floral-accent--cta-tl" aria-hidden="true">
+            <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="40"  cy="40"  r="32" fill="#C4857A" opacity="0.18"/>
+                <circle cx="80"  cy="25"  r="20" fill="#DBAAA4" opacity="0.22"/>
+                <circle cx="25"  cy="80"  r="20" fill="#DBAAA4" opacity="0.22"/>
+                <circle cx="110" cy="50"  r="13" fill="#C4857A" opacity="0.16"/>
+                <circle cx="50"  cy="115" r="13" fill="#C4857A" opacity="0.16"/>
+                <path d="M40 40 Q70 10 110 25"   stroke="#8BA888" stroke-width="2" fill="none" opacity="0.3"/>
+                <path d="M40 40 Q10 70 25 110"   stroke="#8BA888" stroke-width="2" fill="none" opacity="0.3"/>
+                <ellipse cx="88"  cy="30"  rx="18" ry="7" fill="#8BA888" opacity="0.22" transform="rotate(-35 88 30)"/>
+                <ellipse cx="30"  cy="88"  rx="18" ry="7" fill="#8BA888" opacity="0.22" transform="rotate(55 30 88)"/>
+            </svg>
+        </div>
+        <div class="floral-accent floral-accent--cta-br" aria-hidden="true">
+            <svg viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="260" cy="260" r="32" fill="#C4857A" opacity="0.18"/>
+                <circle cx="220" cy="275" r="20" fill="#DBAAA4" opacity="0.22"/>
+                <circle cx="275" cy="220" r="20" fill="#DBAAA4" opacity="0.22"/>
+                <circle cx="190" cy="250" r="13" fill="#C4857A" opacity="0.16"/>
+                <circle cx="250" cy="190" r="13" fill="#C4857A" opacity="0.16"/>
+                <path d="M260 260 Q230 290 190 275" stroke="#8BA888" stroke-width="2" fill="none" opacity="0.3"/>
+                <path d="M260 260 Q290 230 275 190" stroke="#8BA888" stroke-width="2" fill="none" opacity="0.3"/>
+                <ellipse cx="212" cy="270" rx="18" ry="7" fill="#8BA888" opacity="0.22" transform="rotate(20 212 270)"/>
+                <ellipse cx="270" cy="212" rx="18" ry="7" fill="#8BA888" opacity="0.22" transform="rotate(-70 270 212)"/>
+            </svg>
+        </div>
+
         <div class="cta__content" data-reveal>
+            <!-- Badge circulaire centré -->
+            <div style="display:flex; justify-content:center; margin-bottom: 20px;">
+                <div class="round-badge round-badge--md" style="background: rgba(255,255,255,0.9);">
+                    <span class="round-badge__crown">♛</span>
+                    <span class="round-badge__title">Depuis<br>toujours</span>
+                    <span class="round-badge__stars">★ ★ ★</span>
+                </div>
+            </div>
             <span class="t-label">Commencez l'expérience</span>
             <div class="divider divider--center"><span class="divider__dot">◆</span></div>
             <h2 class="cta__title">Prête à élever<br><em>votre table ?</em></h2>
@@ -971,6 +1305,44 @@
             </div>
         </div>
     </section>
+
+    <!-- ===== INVITATION BLOCK ===== -->
+    <div style="background: var(--cream-2); padding: 56px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+        <div class="container" style="max-width: 700px;">
+            <div class="ornate-frame" style="text-align: center;">
+                <span class="ornate-frame-corner ornate-frame-corner--tl"></span>
+                <span class="ornate-frame-corner ornate-frame-corner--tr"></span>
+                <span class="ornate-frame-corner ornate-frame-corner--bl"></span>
+                <span class="ornate-frame-corner ornate-frame-corner--br"></span>
+
+                <div class="ornate-divider ornate-divider--center" style="margin-top: 0;">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
+
+                <p style="font-family: var(--font-serif); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.25em; text-transform: uppercase; color: var(--blush); margin-bottom: 12px;">
+                    Satisfait ou remboursé
+                </p>
+                <h3 style="font-family: var(--font-serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 400; color: var(--charcoal); line-height: 1.25; margin-bottom: 16px;">
+                    Votre satisfaction,<br><em style="font-style:italic; color:var(--blush)">notre garantie.</em>
+                </h3>
+                <p style="font-size: 0.82rem; color: var(--charcoal-2); line-height: 1.85; max-width: 500px; margin: 0 auto 28px;">
+                    Chaque produit est garanti à la hauteur de vos attentes. Si vous n'êtes pas entièrement satisfait de votre commande, nous nous engageons à vous rembourser — sans question, sans contrat.
+                </p>
+
+                <div style="display: inline-flex; align-items: center; gap: 10px; background: var(--blush-pale); border: 1px solid var(--blush-light); border-radius: 50px; padding: 10px 28px;">
+                    <span style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blush);">✦ &nbsp; Satisfaction garantie &nbsp; ✦</span>
+                </div>
+
+                <div class="ornate-divider ornate-divider--center" style="margin-bottom: 0;">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- ===== NEWSLETTER ===== -->
     <section class="newsletter">
