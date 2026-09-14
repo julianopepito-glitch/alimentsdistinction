@@ -187,7 +187,7 @@
             font-weight: 400;
             letter-spacing: 0.14em;
             text-transform: uppercase;
-            color: var(--charcoal-2);
+            color: var(--blush);
             transition: color 0.2s;
             position: relative;
         }
@@ -891,6 +891,7 @@
         <ul class="nav-links">
             <li><a class="nav-link" href="#collections">Nos produits</a></li>
             <li><a class="nav-link" href="#story">Notre histoire</a></li>
+            <li><a class="nav-link" href="#recettes">Recettes</a></li>
             <li><a class="nav-link" href="#process">Livraison</a></li>
             <li><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -1363,6 +1364,113 @@
             </div>
         </div>
     </div>
+
+    <!-- ===== RECETTES ===== -->
+    <section class="recettes plaster-bg" id="recettes" style="background: var(--cream-2); padding: 100px 0; position: relative; overflow: hidden;">
+
+        <!-- Feuilles coin haut droit -->
+        <div class="leaf-deco leaf-deco--tr" aria-hidden="true" style="opacity: 0.45;">
+            <svg viewBox="0 0 340 320" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M340 0 Q295 55 260 95 Q225 132 195 162" stroke="#4a7c59" stroke-width="2" fill="none" opacity="0.6"/>
+                <path d="M260 95 C283 73 302 66 309 80 C316 94 302 118 278 122 C260 124 252 108 260 95 Z" fill="#5a9468" opacity="0.82"/>
+                <path d="M225 132 C246 112 264 106 270 118 C276 130 264 150 242 154 C226 154 218 142 225 132 Z" fill="#4e8a62" opacity="0.78"/>
+                <path d="M330 38 C338 22 340 15 340 22 C340 32 335 42 328 42 Z" fill="#7ac285" opacity="0.65"/>
+            </svg>
+        </div>
+
+        <div class="container">
+            <div style="text-align: center; max-width: 560px; margin: 0 auto 64px;" data-reveal>
+                <span class="t-label">Inspirations culinaires</span>
+                <div class="ornate-divider ornate-divider--center">
+                    <div class="ornate-divider__line"></div>
+                    <div class="ornate-divider__center">✦ &nbsp; ◆ &nbsp; ✦</div>
+                    <div class="ornate-divider__line ornate-divider__line--right"></div>
+                </div>
+                <h2 class="t-h2">Nos recettes <em style="font-style:italic; color:var(--blush)">signature</em></h2>
+                <p class="t-body" style="margin-top: 18px;">Tirez le meilleur de chaque produit avec nos suggestions de préparation — des recettes simples et élégantes conçues autour de nos coupes d'exception.</p>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+
+                <!-- Recette 1 -->
+                <div class="col-card" data-reveal style="cursor: default;">
+                    <div class="col-card__img col-card__img-std" style="height: 240px;">
+                        <img src="https://images.unsplash.com/photo-1558030006-450675393462?w=700&q=85" alt="Contre-filet sous-vide">
+                    </div>
+                    <div class="col-card__body">
+                        <div class="col-card__label">Bœuf Prime</div>
+                        <h3 class="col-card__title">Contre-filet sous-vide,<br>beurre à l'ail & thym</h3>
+                        <div style="display: flex; gap: 16px; margin: 12px 0;">
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                55 min
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                2 personnes
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--blush); font-weight: 500;">Facile</span>
+                        </div>
+                        <p class="col-card__desc">Cuisson précise à 54°C pour un médium-saignant parfait, saisie express à la poêle en fonte. Un résultat digne d'un chef étoilé.</p>
+                        <span class="col-card__link">Voir la recette</span>
+                    </div>
+                </div>
+
+                <!-- Recette 2 -->
+                <div class="col-card" data-reveal data-d="2" style="cursor: default;">
+                    <div class="col-card__img col-card__img-std" style="height: 240px;">
+                        <img src="https://images.unsplash.com/photo-1559847844-5315695dadae?w=700&q=85" alt="Homard grillé">
+                    </div>
+                    <div class="col-card__body">
+                        <div class="col-card__label">Fruits de mer</div>
+                        <h3 class="col-card__title">Homard grillé,<br>beurre citronné & ciboulette</h3>
+                        <div style="display: flex; gap: 16px; margin: 12px 0;">
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                25 min
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+                                2 personnes
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--blush); font-weight: 500;">Facile</span>
+                        </div>
+                        <p class="col-card__desc">La simplicité au service de l'excellence. Le homard de la Gaspésie ne demande qu'un peu de beurre et de citron pour révéler tout son caractère.</p>
+                        <span class="col-card__link">Voir la recette</span>
+                    </div>
+                </div>
+
+                <!-- Recette 3 -->
+                <div class="col-card" data-reveal data-d="3" style="cursor: default;">
+                    <div class="col-card__img col-card__img-std" style="height: 240px;">
+                        <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?w=700&q=85" alt="Carré d'agneau">
+                    </div>
+                    <div class="col-card__body">
+                        <div class="col-card__label">Agneau du Québec</div>
+                        <h3 class="col-card__title">Carré d'agneau en croûte<br>d'herbes & moutarde</h3>
+                        <div style="display: flex; gap: 16px; margin: 12px 0;">
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                                45 min
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--gray); display: flex; align-items: center; gap: 5px;">
+                                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                4 personnes
+                            </span>
+                            <span style="font-size: 0.68rem; color: var(--earth); font-weight: 500;">Intermédiaire</span>
+                        </div>
+                        <p class="col-card__desc">Une croûte dorée de chapelure, persil et ail qui enrobe délicatement notre carré d'agneau du Québec. Le plat de résistance parfait pour épater vos convives.</p>
+                        <span class="col-card__link">Voir la recette</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="text-align: center; margin-top: 48px;" data-reveal>
+                <a href="#" class="btn btn-outline-blush">Voir toutes les recettes</a>
+            </div>
+        </div>
+    </section>
 
     <!-- ===== PROCESS ===== -->
     <section class="process" id="process">
